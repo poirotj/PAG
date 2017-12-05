@@ -1,0 +1,95 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+  {{parent()}} -- Annonce
+{% endblock %}
+
+{% block body %}
+<h3>Formulaire d'annonce</h3>
+
+<hr>
+
+{% for message in app.flashes('danger') %}
+  <div class="alert alert-danger">
+    {{ message }}
+  </div>
+{% endfor %}
+{% for message in app.flashes('notice') %}
+  <div class="alert alert-success">
+    {{ message }}
+  </div>
+{% endfor %}
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  {{ form_errors(form) }}
+
+  <div class="form-group">
+    {{ form_label(form.nom, "Titre de l'annonce :", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+    <div class="col-lg-9">
+      {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+      {% if form_errors(form.nom) %}
+        <div class="alert alert-danger alertdangerform">
+          {{ form_errors(form.nom) }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.description, "Description de l'annonce :", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+    <div class="col-lg-9">
+      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+      {% if form_errors(form.description) %}
+        <div class="alert alert-danger alertdangerform">
+          {{ form_errors(form.description) }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.prix, "Prix de l'annonce :", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+    <div class="col-lg-9">
+      {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+      {% if form_errors(form.prix) %}
+        <div class="alert alert-danger alertdangerform">
+          {{ form_errors(form.prix) }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.mail, "Mail :", {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+    <div class="col-lg-9">
+      {{ form_widget(form.mail, {'attr': {'class': 'form-control'}}) }}
+      {% if form_errors(form.mail) %}
+        <div class="alert alert-danger alertdangerform">
+          {{ form_errors(form.mail) }}
+        </div>
+      {% endif %}
+      <p class="text-muted">
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true">
+          info !
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-3 col-lg-9">
+      {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+      {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-primary col-sm-3'}}) }}
+      <a href="{{ path('app_annonce_index') }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Annuler
+      </a>
+    </div>
+  </div>
+
+  {{ form_rest(form) }}
+
+{{ form_end(form) }}
+
+{% endblock %}

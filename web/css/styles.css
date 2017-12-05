@@ -1,0 +1,10 @@
+body{
+  background-color: rgba(226, 223, 223, 0.66) !important;
+  min-height: 100% !important;
+}
+
+.alertdangerform{
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}

@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+  {{parent()}} -- Annonce
+{% endblock %}
+
+{% block body %}
+<h3>{{ annonce.nom }}</h3>
+
+<hr>
+
+<div class="" style=" margin-top: 3em; background-color: rgba(221, 222, 224, 0.14); border-radius: 0.6em; box-shadow: 0 0 0.15em rgb(171, 171, 171) inset;">
+    <div class="col-lg-12">
+      {{ annonce.nom|capitalize  }}
+    </div>
+    <div class="col-lg-12">
+      {{ annonce.mail }}
+    </div>
+    <div class="col-lg-12" style=" margin-top: 1em; margin-bottom: 1em; padding: 1em; background-color: rgba(144, 144, 146, 0.07); border-radius: 0.7em; box-shadow: 0 0 0.25em black inset;">
+      {{ annonce.description|raw }}
+    </div>
+    <div <div class="col-lg-12" style="margin-bottom: 1em">
+      Prix : {{ annonce.prix }}
+    </div>
+
+
+</div>
+{% endblock %}

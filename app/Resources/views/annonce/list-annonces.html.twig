@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+  {{parent()}} -- Nos annonces
+{% endblock %}
+
+{% block body %}
+  {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger">
+      {{ message }}
+    </div>
+  {% endfor %}
+  {% for message in app.flashes('notice') %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+  {% if annonces is defined %}
+    <table  class="table table-striped">
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>Titre</td>
+          <td>Description</td>
+          <td>Prix</td>
+          <td>Mail</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for annonce in annonces %}
+
+          <tr>
+            <td>{{ annonce.id }}</a></td>
+            <td>
+              <a href="{{ path('app_annonce_view', {'id': annonce.id}) }}">
+                {{ annonce.nom }}
+              </a>
+            </td>
+            <td>{{ annonce.description }}</td>
+            <td style="color:{{annonce.prix|prixColor}}">{{ annonce.prix|prix(2) }}</td>
+            <td>{{ annonce.mail }}</td>
+          </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

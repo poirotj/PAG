@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+  {{parent()}} -- error
+{% endblock %}
+
+{% block body %}
+  <div class="alert alert-danger">Le serveur a retourné une erreur : {{ status_text }}</div>
+  <div class="center" >
+      <center><img src="{{ asset('img/404Page.jpg') }}" alt="404error" ></center>
+  </div>
+{% endblock %}

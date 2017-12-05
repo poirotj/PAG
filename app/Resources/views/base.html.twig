@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{mon_site}}{% endblock %}</title>
+
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% endblock %}
+
+  </head>
+
+  <body>
+    <div class="alert alert-success">Bienvenue sur {{mon_site}}</div>
+    <div class="container">
+      <header>
+
+        {% include 'menu/menu.html.twig' %}
+      </header>
+
+      <div class="well" style="min-height : 25em">
+        {% block body %}{% endblock %}
+      </div>
+
+    </div>
+
+    <footer>
+      <hr>
+      <i class="fa fa-copyright" aria-hidden="true"></i> Copyright
+      {{mon_site}} - Tous droits reservés
+    </footer>
+    {% block javascripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {% endblock %}
+
+  </body>
+</html>
